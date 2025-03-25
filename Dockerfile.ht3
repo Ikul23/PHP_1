@@ -1,0 +1,37 @@
+# Dockerfile.ht3
+FROM php:8.1-fpm
+
+# Установка системных зависимостей
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip
+
+# Установка расширений PHP
+RUN docker-php-ext-install \
+    pdo_mysql \
+    mbstring \
+    gd
+
+# Установка Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Установка рабочей директории
+WORKDIR /var/www/html
+
+# Копирование файлов проекта
+COPY ./src/ht3 .
+
+# Установка зависимостей Composer (если есть)
+RUN if [ -f "composer.json" ]; then \
+        composer install --no-dev --no-scripts --no-autoloader; \
+    fi
+
+# Генерация автозагрузчика
+RUN if [ -f "composer.json" ]; then \
+        composer dump-autoload --optimize; \
+    fi
