@@ -1,43 +1,6 @@
+version: "3.8"
+
 services:
-  nginx:
-    image: nginx:latest
-    ports:
-      - "80:80" # ht1
-      - "81:81" # ht2
-      - "82:82" # ht3
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - ./src:/var/www/html
-    networks:
-      - php-network
-
-  php-ht1:
-    build:
-      context: .
-      dockerfile: Dockerfile.ht1
-    volumes:
-      - ./src/ht1:/var/www/html
-    networks:
-      - php-network
-
-  php-ht2:
-    build:
-      context: .
-      dockerfile: Dockerfile.ht2
-    volumes:
-      - ./src/ht2:/var/www/html
-    networks:
-      - php-network
-
-  php-ht3:
-    build:
-      context: .
-      dockerfile: Dockerfile.ht3
-    volumes:
-      - ./src/ht3:/var/www/html
-    networks:
-      - php-network
-
   php-cli:
     build:
       context: .
@@ -45,10 +8,5 @@ services:
     volumes:
       - ./src:/var/www/html
     working_dir: /var/www/html
+    stdin_open: true
     tty: true
-    networks:
-      - php-network
-
-networks:
-  php-network:
-    driver: bridge
