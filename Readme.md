@@ -1,6 +1,6 @@
 # Навигация по папкам
 
-## <[Первое Д/З](https://github.com/Ikul23/PHP_1/tree/main/src/ht1)>
+## <[Четветое Д/З](https://github.com/Ikul23/PHP_1/tree/main/src/ht1)>
 
 ## <[Второе Д/З](https://github.com/Ikul23/PHP_1/tree/main/src/ht2)>
 
