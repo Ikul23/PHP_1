@@ -4,6 +4,8 @@
 
 ## <[Второе Д/З](https://github.com/Ikul23/PHP_1/tree/main/src/ht2)>
 
+## <[Третье Д/З](https://github.com/Ikul23/PHP_1/tree/main/src/ht3)>
+
 ### projects/
 
 │
@@ -31,7 +33,7 @@
 
 │ │
 │ └── ht3/ # Третий проект
-│ ├── index.php # Главный файл третьего проекта
+│ ├── file_storage.php # Главный файл третьего проекта
 │ ├── public/ # Публичные файлы
 │ └── app/ # Логика приложения
 

@@ -1,5 +1,4 @@
 version: "3.8"
-
 services:
   php-cli:
     build:
@@ -10,3 +9,39 @@ services:
     working_dir: /var/www/html
     stdin_open: true
     tty: true
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - ht1
+      - ht2
+      - ht3
+
+  ht1:
+    build:
+      context: .
+      dockerfile: Dockerfile.ht1
+    volumes:
+      - ./src/ht1:/var/www/html
+    working_dir: /var/www/html
+
+  ht2:
+    build:
+      context: .
+      dockerfile: Dockerfile.ht2
+    volumes:
+      - ./src/ht2:/var/www/html
+    working_dir: /var/www/html
+
+  ht3:
+    build:
+      context: .
+      dockerfile: Dockerfile.ht3
+    volumes:
+      - ./src/ht3:/var/www/html
+    working_dir: /var/www/html
